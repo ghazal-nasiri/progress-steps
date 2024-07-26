@@ -1,0 +1,203 @@
+:root {
+    --deep: rgb(255, 106, 131);
+    --border: rgb(253, 159, 173);
+    --light: pink;
+    --text: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.colorSelection {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    border: 2px solid #000;
+    z-index: 99;
+    height: 20px;
+    overflow: hidden;
+    transition: .4s ease-in-out;
+}
+
+.colorSelection:hover{
+    height: 30px;
+    width: 150px;
+}
+
+.pink {
+    background-color: deeppink;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.container {
+    z-index: 100;
+    max-width: 90%;
+    width: 400px;
+    text-align: center;
+}
+
+.progress-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.progress-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: var(--light);
+    z-index: -1;
+
+}
+
+.progress {
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: var(--deep);
+    z-index: -1;
+    transition: .4s ease-in-out;
+}
+
+
+.step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light);
+    border: 3px solid var(--border);
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.6);
+    transition: .4s ease-in-out;
+    cursor: pointer;
+}
+
+.step.active {
+    border-color: var(--deep);
+    color: var(--text);
+}
+
+
+button {
+    width: 40px;
+    height: 40px;
+    background-color: var(--deep);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    margin: 5px;
+    margin-top: 30px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+button:disabled {
+    /* cursor: no-drop; */
+    cursor: auto;
+}
+
+
+.background {
+    width: 400%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .4s ease-in-out;
+
+}
+
+.bg {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.bg:first-child {
+    left: 0;
+    background: linear-gradient(-50deg, #e8708d, #a546a5, #6356b0);
+}
+
+.bg:nth-child(2) {
+    background: url(../img/1.webp) center no-repeat;
+    background-size: cover;
+    left: 25%;
+}
+
+.bg:nth-child(3) {
+    left: 50%;
+    background: linear-gradient(-50deg, #244652, #848593, #8698b1, #e1dbb7);
+}
+
+.bg:last-child {
+    background: url(../img/2.webp) center no-repeat;
+    background-size: cover;
+    left: 75%;
+}
+
+
+
+@media screen and (min-width : 1500px) {
+    .container{
+        width: 550px;
+    }
+    .step{
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+    button{
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
